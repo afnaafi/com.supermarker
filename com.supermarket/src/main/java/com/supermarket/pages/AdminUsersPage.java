@@ -1,5 +1,8 @@
 package com.supermarket.pages;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -108,10 +111,10 @@ public class AdminUsersPage {
 	}
 
 	public void selectNameAndDelete(String name) {
-		WebElement nameInTable = driver.findElement(By.xpath("//tbody//tr//td[text()='" + name + "']"));
+
 		WebElement deletebutton = driver
 				.findElement(By.xpath("//tr//td[text()='" + name + "']/following::i[@class='fas fa-trash-alt']"));
-		nameInTable.click();
+
 		deletebutton.click();
 		pageutility = new PageUtility(driver);
 		pageutility.accept_Alert();
@@ -126,6 +129,28 @@ public class AdminUsersPage {
 	public boolean userNotFound() {
 		generalutilities = new GeneralUtilities(driver);
 		return generalutilities.is_Displayed(noUserFound);
+	}
+
+	public boolean deactivateUser(String userName) {
+
+		generalutilities = new GeneralUtilities(driver);
+		List<String> names = new ArrayList<String>();
+		names = generalutilities.get_textofElements("//tr//td[1]");
+		int pos = 0;
+		for (pos = 0; pos < names.size(); pos++) {
+			if (names.get(pos).equals(userName)) {
+				pos++;
+				break;
+			}
+
+		}
+		WebElement deactivareUser = driver.findElement(By.xpath("//tr[" + pos + "]//td[5]//a[1]"));
+		pageutility = new PageUtility(driver);
+		pageutility.scrollInTo_View(deactivareUser);
+		deactivareUser.click();
+		WebElement inactive = driver.findElement(By.xpath("//div[@class='alert alert-success alert-dismissible']"));
+		generalutilities = new GeneralUtilities(driver);
+		return generalutilities.is_Displayed(inactive);
 	}
 
 }

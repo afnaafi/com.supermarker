@@ -8,6 +8,8 @@ public class Constants {
 
 	// **loginpage**//
 	public static final String expectedRememberMeText = "Remember Me";
+	public static final String EXPECTEDUSERNAME="Admin";
+	public static final String INVALIDUSERALERT="Invalid Username/Password";
 
 	// **homepage**//
 	public static final String expectedBoxOneText = "Manage Pages";

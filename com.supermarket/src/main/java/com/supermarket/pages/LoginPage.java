@@ -27,7 +27,7 @@ public class LoginPage {
 	private WebElement passwordElement;
 	@FindBy(xpath = "//button[@class='btn btn-dark btn-block']")
 	private WebElement SignInButton;// encapsulation
-	@FindBy(xpath = "//a[@class='d-block']")
+	@FindBy(xpath = "//div[@class='info']//a[text()=' Admin']")
 	private WebElement profileElement;
 	@FindBy(xpath = "//div[@class='icheck-dark']//label")
 	private WebElement rememberMeElement;
@@ -35,7 +35,6 @@ public class LoginPage {
 	WebElement rememberMeBox;
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
 	private WebElement alertMessage;
-	
 
 	public LoginPage(WebDriver driver) {
 		try {
@@ -59,10 +58,7 @@ public class LoginPage {
 	}
 
 	public void clickOnRememberMe() {
-		// PageUtility pageutility=new PageUtility(driver);
-		// pageutility.click_OnElement(rememberMeElement);
 		rememberMeElement.click();
-
 	}
 
 	public void clickOnSignInButton() {
@@ -122,9 +118,11 @@ public class LoginPage {
 	}
 
 	public String get_LoginUsersName() {
-		generalutilities = new GeneralUtilities(driver);
-		return generalutilities.get_TextOfElement(profileElement);
+		return profileElement.getText();
+	}
 
+	public String rememberMeText() {
+		return rememberMeElement.getText();
 	}
 
 }

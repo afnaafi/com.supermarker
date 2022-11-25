@@ -1,65 +1,67 @@
 package com.supermarket.tests;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.supermarket.base.Base;
+import com.supermarket.constants.Constants;
 import com.supermarket.pages.LoginPage;
 import com.supermarket.utilities.Excel;
-import com.supermarket.utilities.ScreenShot;
+
 
 public class LoginTest extends Base {
 	LoginPage loginpage;
 	Excel excel = new Excel();
 	SoftAssert softassert;
-	
-	
 
-	@Test // TC_01
-	public void verifyLoginDisplay() {
+	@Test
+	public void verifyLoginPageDisplay() {
 		loginpage = new LoginPage(driver);
-		softassert=new SoftAssert();
+		softassert = new SoftAssert();
 		softassert.assertTrue(loginpage.username_IsDisplayed());
 		softassert.assertTrue(loginpage.password_IsDisplayed());
 		softassert.assertTrue(loginpage.rememberMe_IsDispayed());
 		softassert.assertTrue(loginpage.signIn_IsDispayed());
 	}
 
-	@Test // TC_02
+	@Test
 	public void verifyStafLoginFunctionality() {
-		ScreenShot screenshot =new ScreenShot();
 		loginpage = new LoginPage(driver);
 		excel.setExcelFile("LoginDatas", "ValidLoginCredentials");
 		String userName = excel.get_CellData(0, 0);
 		String password = excel.get_CellData(0, 1);
 		loginpage.login(userName, password);
-		screenshot.takeScreenShot(driver, "afna");
+		String actualUserName = loginpage.get_LoginUsersName();
+		Assert.assertEquals(Constants.EXPECTEDUSERNAME, actualUserName);
 
 	}
 
-	@Test // TC_03
-	public void verifyInvalidloginAlertMessage() {
+	@Test
+	public void verifyInvalidLoginAlertMessage() {
 		loginpage = new LoginPage(driver);
 		excel.setExcelFile("LoginDatas", "InvalidLoginCredentilas");
 		String userName = excel.get_CellData(0, 0);
 		String password = excel.get_CellData(0, 1);
 		loginpage.login(userName, password);
 		loginpage.alert_Message();
-		Assert.assertTrue(loginpage.isInvalidAlertMessagePresent("Invalid Username/Password"));
+		Assert.assertTrue(loginpage.isInvalidAlertMessagePresent(Constants.INVALIDUSERALERT));
 	}
 
-	@Test // TC_04
+	@Test
 	public void verifyRememberMe_IsSelected() {
 		loginpage = new LoginPage(driver);
-		Assert.assertFalse(loginpage.rememberMe_IsSelected());
+		softassert = new SoftAssert();
+		softassert.assertFalse(loginpage.rememberMe_IsSelected());
 		loginpage.clickOnRememberMe();
-		Assert.assertTrue(loginpage.rememberMe_IsSelected());
+		softassert.assertTrue(loginpage.rememberMe_IsSelected());
 	}
-	@Test // TC_04
-	public void verifyRememberMeCheckbox() {
+
+	@Test
+	public void verifyRememberMeCheckboxText() {
 		loginpage = new LoginPage(driver);
-		
-		
+		String actualText = loginpage.rememberMeText();
+		Assert.assertEquals(Constants.expectedRememberMeText, actualText);
 	}
 
 	@Test
