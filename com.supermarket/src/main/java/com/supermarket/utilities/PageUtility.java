@@ -74,17 +74,16 @@ public class PageUtility {
 		}
 	}
 
-	public void scroll_And_Click(WebElement element)
-	{
-		int x=0;
-		js=(JavascriptExecutor) driver;
-	
-		while(is_Clicked(element))
-		{
+	public void scroll_And_Click(WebElement element) {
+		int x = 0;
+		js = (JavascriptExecutor) driver;
+
+		while (is_Clicked(element)) {
 			js.executeScript("window.scrollBy(0," + x + ")");
-			x=x+20;
-			
-		}}
+			x = x + 20;
+
+		}
+	}
 
 	public void clickOn_WebElement(WebElement element) {
 

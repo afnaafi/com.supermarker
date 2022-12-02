@@ -118,6 +118,8 @@ public class LoginPage {
 	}
 
 	public String get_LoginUsersName() {
+		waitutility = new WaitUtility(driver);
+		waitutility.waitForElementToBeVisible(10, "//div[@class='info']//a[text()=' Admin']");
 		return profileElement.getText();
 	}
 

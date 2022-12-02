@@ -19,8 +19,8 @@ public class ManageContentTest extends Base {
 	Excel excel = new Excel();
 	GeneralUtilities generalutilities = new GeneralUtilities();
 
-	@Test
-	public void verifyUserAbleToCreateNewList() {
+	@Test(groups="Smoke")
+	public void verifyCreateNewListFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		homepage = new HomePage(driver);
@@ -35,8 +35,13 @@ public class ManageContentTest extends Base {
 		title = title + "_" + timeStamp;
 		page = page + generalutilities.get_RandomNumber();
 		managecontentpage.add_List(title, description, page);
-		managecontentpage.uploadimage();
+		String imageName= "Noodles";
+		managecontentpage.uploadimage(imageName);
 		managecontentpage.saveList();
+		String expectedProductTitle = Constants.EXPECTEDPRODUCT + generalutilities.get_RandomNumber();
+		String actualProductTitle = managecontentpage.textOfProductTitle(title);
+		Assert.assertEquals(expectedProductTitle, actualProductTitle);
+		
 	}
 
 	@Test
@@ -55,18 +60,17 @@ public class ManageContentTest extends Base {
 		title = title + "_" + timeStamp;
 		page = page + generalutilities.get_RandomNumber();
 		managecontentpage.add_List(title, description, page);
-		managecontentpage.uploadimage();
+		String imageName= "Noodles";
+		managecontentpage.uploadimage(imageName);
 		managecontentpage.saveList();
 		String expectedProductTitle = Constants.EXPECTEDPRODUCT + generalutilities.get_RandomNumber();
 		String actualProductTitle = managecontentpage.textOfProductTitle(title);
-		System.out.println(expectedProductTitle);
-		System.out.println(actualProductTitle);
 		Assert.assertEquals(expectedProductTitle, actualProductTitle);
 
 	}
 
-	@Test
-	public void verifyFooterUpadeDetailsIsSuccess() {
+	@Test(invocationCount = 2)
+	public void verifyFooterUpadeDetailsFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		homepage = new HomePage(driver);
@@ -80,8 +84,8 @@ public class ManageContentTest extends Base {
 		managecontentpage.UpadateFooterDetails(address, email, phone);
 		Assert.assertTrue(managecontentpage.updateSucessAlert());
 	}
-	@Test
-	public void verifyDeleteNewsIsSuccess() {
+	@Test(groups="Smoke")
+	public void verifyDeleteNewsFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		homepage = new HomePage(driver);

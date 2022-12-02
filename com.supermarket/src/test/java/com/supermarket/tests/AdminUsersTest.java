@@ -16,8 +16,8 @@ public class AdminUsersTest extends Base {
 	GeneralUtilities generalutilities = new GeneralUtilities();
 	SoftAssert softassert;
 
-	@Test
-	public void verifyNewUserCreated_Success() {
+	@Test(groups = "Regression",priority = 1)
+	public void verifyNewUserCreatedFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		softassert = new SoftAssert();
@@ -34,11 +34,12 @@ public class AdminUsersTest extends Base {
 		adminuserspage.click_onSearch();
 		adminuserspage.searchUser(name, "staff");
 		softassert.assertTrue(adminuserspage.user_IsDisplayed());
+		softassert.assertAll();
 		
 	}
 
-	@Test
-	public void verifyUserDeleting_Successful() {
+	@Test(groups="Smoke",priority = 6)
+	public void verifyUserDeleteFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		adminuserspage = new AdminUsersPage(driver);
@@ -53,9 +54,10 @@ public class AdminUsersTest extends Base {
 		adminuserspage.selectNameAndDelete(name);
 		softassert = new SoftAssert();
 		softassert.assertTrue(adminuserspage.deleteUserSuccessAlert());
+		softassert.assertAll();
 	}
 
-	@Test
+	@Test(dependsOnMethods = {"verifyWhetherUserCanDelete"},priority = 8)
 	public void verifyDeletedUserNotAvailable() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
@@ -73,6 +75,7 @@ public class AdminUsersTest extends Base {
 		adminuserspage.searchUser(name, "staff");
 		softassert = new SoftAssert();
 		softassert.assertFalse(adminuserspage.userNotFound());
+		softassert.assertAll();
 	}
 	@Test
 	public void verifyAdminUserDeactivation() {
@@ -83,8 +86,8 @@ public class AdminUsersTest extends Base {
 		Assert.assertTrue(adminuserspage.deactivateUser("jeff0"));
 		
 	}
-	@Test(description = "test failed selectuser is not available")
-	public void searchCreatedUser() {
+	@Test(priority = 3)
+	public void searchCreatedUserFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		adminuserspage = new AdminUsersPage(driver);
@@ -100,9 +103,10 @@ public class AdminUsersTest extends Base {
 		adminuserspage.searchUser(name, "partner");
 		softassert = new SoftAssert();
 		softassert.assertTrue(adminuserspage.user_IsDisplayed());
+		softassert.assertAll();
 	}
 	@Test
-	public void verifyNewCreatedUserAbleToLogin() {
+	public void verifyNewCreatedUserLoginFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		homepage=new HomePage(driver);
@@ -110,7 +114,7 @@ public class AdminUsersTest extends Base {
 		adminuserspage = new AdminUsersPage(driver);
 		adminuserspage.click_onAdminUsers();
 		adminuserspage.click_OnNew();
-		String name = "helen" + generalutilities.get_RandomNumber();
+		String name = "Helen" + generalutilities.get_RandomNumber();
 		String password="helen";
 		adminuserspage.enterUserName(name);
 		adminuserspage.enterPassword(password);
@@ -119,6 +123,8 @@ public class AdminUsersTest extends Base {
 		adminuserspage.click_Onsave();
 		homepage.user_LogOut();
 		loginpage.login(name, password);
+		Assert.assertEquals(name,adminuserspage.get_LoginUsersName(name) );
+		
 	}
 	
 	

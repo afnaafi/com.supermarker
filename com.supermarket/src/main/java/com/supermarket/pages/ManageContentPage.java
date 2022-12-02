@@ -41,9 +41,8 @@ public class ManageContentPage {
 	WebElement footerActionButton;
 	@FindBy(xpath = "//li[@class='nav-item']//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news']")
 	WebElement manageNews;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement deleteNewsSuccessAlert;
-	
 
 	public ManageContentPage(WebDriver driver) {
 		this.driver = driver;
@@ -66,10 +65,10 @@ public class ManageContentPage {
 
 	}
 
-	public void uploadimage() {
+	public void uploadimage(String imageName) {
 		pageutility = new PageUtility(driver);
 		pageutility.file_Upload(imageupload,
-				System.getProperty("user.dir") + "\\src\\main\\resources\\ExcelFiles\\Noodles.jpg");
+				System.getProperty("user.dir") + "\\src\\main\\resources\\ExcelFiles\\images\\" + imageName + ".jpg");
 
 	}
 
@@ -96,11 +95,10 @@ public class ManageContentPage {
 	public void clickOnManageContact() {
 		manageContact.click();
 	}
+
 	public void clickOnManageNews() {
 		manageNews.click();
 	}
-	
-	
 
 	public void UpadateFooterDetails(String address, String email, String phone) {
 		footerActionButton.click();
@@ -118,27 +116,28 @@ public class ManageContentPage {
 	}
 
 	public boolean updateSucessAlert() {
-		WebElement updateSuccess=driver.findElement(By.className("alert-dismissible"));
+		WebElement updateSuccess = driver.findElement(By.className("alert-dismissible"));
 		generalutilities = new GeneralUtilities(driver);
 		return generalutilities.is_Displayed(updateSuccess);
 	}
-	
+
 	public void DeleteNews(String news) {
 		generalutilities = new GeneralUtilities(driver);
-		List<String> news1=new ArrayList<String>();
-		news1=generalutilities.get_textofElements("//tr//td[1]");
-		int pos=0;
-		for( pos=0;pos<news1.size();pos++) {
-			if(news1.get(pos).equals(news)) {
+		List<String> news1 = new ArrayList<String>();
+		news1 = generalutilities.get_textofElements("//tr//td[1]");
+		int pos = 0;
+		for (pos = 0; pos < news1.size(); pos++) {
+			if (news1.get(pos).equals(news)) {
 				pos++;
 				break;
 			}
 		}
-		WebElement deleteButton=driver.findElement(By.xpath("//tr["+pos+"]//td[2]//a[2]"));
+		WebElement deleteButton = driver.findElement(By.xpath("//tr[" + pos + "]//td[2]//a[2]"));
 		pageutility = new PageUtility(driver);
 		pageutility.scroll_And_Click(deleteButton);
 		pageutility.accept_Alert();
 	}
+
 	public boolean deleteNewsSuccess() {
 		return deleteNewsSuccessAlert.isDisplayed();
 	}

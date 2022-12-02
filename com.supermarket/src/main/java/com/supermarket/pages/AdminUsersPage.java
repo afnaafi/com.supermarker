@@ -153,4 +153,11 @@ public class AdminUsersPage {
 		return generalutilities.is_Displayed(inactive);
 	}
 
+	public String get_LoginUsersName(String name) {
+		WebElement profileElement = driver.findElement(By.xpath("//div[@class='info']//a[text()=' " + name + "']"));
+		generalutilities = new GeneralUtilities(driver);
+		return generalutilities.get_TextOfElement(profileElement);
+
+	}
+
 }

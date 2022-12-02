@@ -38,7 +38,7 @@ public class LoginTest extends Base {
 	}
 
 	@Test
-	public void verifyInvalidLoginAlertMessage() {
+	public void verifyInvalidLoginAlertMessageFunctionality() {
 		loginpage = new LoginPage(driver);
 		excel.setExcelFile("LoginDatas", "InvalidLoginCredentilas");
 		String userName = excel.get_CellData(0, 0);
@@ -65,7 +65,7 @@ public class LoginTest extends Base {
 	}
 
 	@Test
-	public void verifyLogin() {
+	public void verifyLoginFunctionality() {
 		String userName = "spniju";
 		String password = "spniju";
 		String expectedUserName = "Spniju";

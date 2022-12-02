@@ -13,21 +13,22 @@ public class Excel {
 	XSSFSheet sh;
 	XSSFRow row;
 	XSSFCell cell;
-	
-	
+
 	public void setExcelFile(String workBookName, String sheetName) {
 		try {
-			String path=System.getProperty("user.dir")+"\\src\\main\\resources\\ExcelFiles\\"+workBookName +".xlsx";
-			File src=new File(path);
-			FileInputStream fi=new FileInputStream(src);
-			wb=new XSSFWorkbook(fi);
-			sh=wb.getSheet(sheetName);
-			
+			String path = System.getProperty("user.dir") + "\\src\\main\\resources\\ExcelFiles\\" + workBookName
+					+ ".xlsx";
+			File src = new File(path);
+			FileInputStream fi = new FileInputStream(src);
+			wb = new XSSFWorkbook(fi);
+			sh = wb.getSheet(sheetName);
 
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();		}
+			e.printStackTrace();
+		}
 	}
+
 	public String get_CellData(int rowNum, int colNum) {
 		row = sh.getRow(rowNum);
 		cell = row.getCell(colNum);

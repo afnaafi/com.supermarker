@@ -12,8 +12,8 @@ public class HomeTest extends Base {
 	HomePage homepage;
 	LoginPage loginpage;
 
-	@Test(description = "testcase1")
-	public void verify_textOfBox1() {
+	@Test(groups = "Regression")
+	public void verify_textOfBox() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		homepage = new HomePage(driver);
@@ -23,7 +23,7 @@ public class HomeTest extends Base {
 		Assert.assertEquals(expectedtext, actualtext);
 	}
 
-	@Test(description = "testcase2")
+	@Test(priority = 10)
 	public void verify_ColorOfBox1() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
@@ -33,8 +33,8 @@ public class HomeTest extends Base {
 		Assert.assertEquals(expectedcolor, actualcolor);
 	}
 
-	@Test(description = "testcase3")
-	public void verify_linkOfBox1IsWorking() {
+	@Test(invocationCount = 2)
+	public void verify_linkOfBox1Functionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		homepage = new HomePage(driver);
@@ -43,7 +43,7 @@ public class HomeTest extends Base {
 
 	}
 
-	@Test(description = "testcase4", dependsOnMethods = { "verify_linkOfBox1IsWorking" })
+	@Test(dependsOnMethods = { "verify_linkOfBox1IsWorking" })
 	public void verify_UrlOfBox1Link() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();

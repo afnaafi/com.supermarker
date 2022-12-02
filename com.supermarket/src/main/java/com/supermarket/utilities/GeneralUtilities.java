@@ -17,7 +17,9 @@ public class GeneralUtilities {
 		this.driver = driver;
 
 	}
-	public GeneralUtilities() {}
+
+	public GeneralUtilities() {
+	}
 
 	public String get_TextOfElement(WebElement element) {
 		return element.getText();
@@ -67,15 +69,17 @@ public class GeneralUtilities {
 	public String get_CurrentUrl() {
 		return driver.getCurrentUrl();
 	}
+
 	public String get_TimeStamp() {
 		String timeStamp = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
 
 		return timeStamp;
 	}
+
 	public String get_RandomNumber() {
-		Random r=new Random();
-		int x=r.nextInt(10);
+		Random r = new Random();
+		int x = r.nextInt(10);
 		return String.valueOf(x);
 	}
-	
+
 }

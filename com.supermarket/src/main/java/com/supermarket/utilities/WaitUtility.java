@@ -31,14 +31,14 @@ public class WaitUtility {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 	}
+
 	public void wait_UntilPopUpAlert(long seconds) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
 
 	public void fluent_Wait() {
-		Wait wait = new FluentWait(driver)
-				.withTimeout(Duration.ofSeconds(50)).pollingEvery(Duration.ofSeconds(5))
+		Wait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(50)).pollingEvery(Duration.ofSeconds(5))
 				.ignoring(Exception.class);
 	}
 

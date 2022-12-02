@@ -23,7 +23,7 @@ public class HomePage {
 	WebElement navBar;
 	@FindBy(xpath = "//div[@class='col-lg-3 col-6']")
 	WebElement boxes;
-	@FindBy(xpath="//div[@class='small-box bg-info']//p[contains(text(),'Manage Pages')]")
+	@FindBy(xpath = "//div[@class='small-box bg-info']//p[contains(text(),'Manage Pages')]")
 	WebElement box1Text;
 	@FindBy(xpath = "//div[@class='small-box bg-info']//a[@href='https://groceryapp.uniqassosiates.com/admin/list-page']")
 	WebElement box1Link;
@@ -31,9 +31,9 @@ public class HomePage {
 	WebElement table1;
 	@FindBy(xpath = "//div[@class='col-sm-6']//h1")
 	WebElement manageContentPageHeading;
-	@FindBy (xpath="//li[@class='nav-item dropdown']")
+	@FindBy(xpath = "//li[@class='nav-item dropdown']")
 	WebElement userNameId;
-	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/logout'][1]")
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/logout'][1]")
 	WebElement logout;
 
 	public HomePage(WebDriver driver) {
@@ -57,6 +57,8 @@ public class HomePage {
 	}
 
 	public void clickOnLink() {
+		waitutility = new WaitUtility(driver);
+		waitutility.fluent_Wait();
 		box1Link.click();
 	}
 
@@ -65,15 +67,15 @@ public class HomePage {
 		return generalutilities.get_CurrentUrl();
 	}
 
-
 	public boolean isManageContentPageHeadingPresent(String expectedText) {
 		generalutilities = new GeneralUtilities(driver);
 		return generalutilities.is_ExpectedTextPresent(manageContentPageHeading, expectedText);
 	}
+
 	public void user_LogOut() {
 		userNameId.click();
 		logout.click();
-		
+
 	}
 
 }

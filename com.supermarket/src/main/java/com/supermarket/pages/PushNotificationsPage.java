@@ -21,6 +21,10 @@ public class PushNotificationsPage {
 	WebElement descriptionText;
 	@FindBy(xpath = "	//button[@class='btn btn-block-sm btn-info']")
 	WebElement sendButton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement successAlert;
+	@FindBy(xpath = "//div[@class='card-footer center']//a")
+	WebElement resetButton;
 
 	public PushNotificationsPage(WebDriver driver) {
 		this.driver = driver;
@@ -42,10 +46,37 @@ public class PushNotificationsPage {
 	public void send_Message() {
 		sendButton.click();
 	}
+
+	public boolean descriptionTextDisplay() {
+		generalutilities = new GeneralUtilities(driver);
+		return generalutilities.is_Displayed(descriptionText);
+	}
+
+	public boolean sendButtonDisplay() {
+		generalutilities = new GeneralUtilities(driver);
+		return generalutilities.is_Displayed(sendButton);
+	}
+
+	public boolean titleTextDisplay() {
+		generalutilities = new GeneralUtilities(driver);
+		return generalutilities.is_Displayed(titleText);
+
+	}
+
+	public boolean resetButtonDisplay() {
+		generalutilities = new GeneralUtilities(driver);
+		return generalutilities.is_Displayed(resetButton);
+
+	}
+
 	public void enter_Message(String title, String description) {
-		 enter_Title(title);
-		 enter_Description(description);
-		 send_Message();
+		enter_Title(title);
+		enter_Description(description);
+		send_Message();
+	}
+
+	public boolean messageSendSuccess() {
+		return successAlert.isDisplayed();
 	}
 
 }
