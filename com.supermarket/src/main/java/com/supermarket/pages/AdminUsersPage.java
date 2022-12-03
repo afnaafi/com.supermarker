@@ -11,11 +11,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.supermarket.utilities.GeneralUtilities;
 import com.supermarket.utilities.PageUtility;
+import com.supermarket.utilities.WaitUtility;
 
 public class AdminUsersPage {
 	WebDriver driver;
 	PageUtility pageutility;
 	GeneralUtilities generalutilities;
+	WaitUtility waitutility;
 
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin']//p")
 	WebElement adminUsersHome;
@@ -91,6 +93,8 @@ public class AdminUsersPage {
 	}
 
 	public boolean verifySuccess() {
+		waitutility = new WaitUtility(driver);
+		waitutility.waitForElementToBeVisible(10, "//div[@class='alert alert-success alert-dismissible']");
 		return successAlert.isDisplayed();
 	}
 
@@ -102,6 +106,8 @@ public class AdminUsersPage {
 		searchUser.sendKeys(username);
 		pageutility = new PageUtility(driver);
 		pageutility.Select_ByValue(searchSelectUser, Usertype);
+		waitutility = new WaitUtility(driver);
+		waitutility.fluent_Wait();
 		userSearchButton.click();
 	}
 
@@ -114,8 +120,9 @@ public class AdminUsersPage {
 
 		WebElement deletebutton = driver
 				.findElement(By.xpath("//tr//td[text()='" + name + "']/following::i[@class='fas fa-trash-alt']"));
-
 		deletebutton.click();
+		waitutility = new WaitUtility(driver);
+		waitutility.wait_UntilPopUpAlert(10);
 		pageutility = new PageUtility(driver);
 		pageutility.accept_Alert();
 
@@ -123,6 +130,8 @@ public class AdminUsersPage {
 
 	public boolean deleteUserSuccessAlert() {
 		generalutilities = new GeneralUtilities(driver);
+		waitutility = new WaitUtility(driver);
+		waitutility.waitForElementToBeVisible(10, "//div[@class='alert alert-success alert-dismissible']");
 		return generalutilities.is_Displayed(deleteAlertSucces);
 	}
 
@@ -135,7 +144,7 @@ public class AdminUsersPage {
 
 		generalutilities = new GeneralUtilities(driver);
 		List<String> names = new ArrayList<String>();
-		names = generalutilities.get_textofElements("//tr//td[1]");
+		names = generalutilities.get_TextOfElement("//tr//td[1]");
 		int pos = 0;
 		for (pos = 0; pos < names.size(); pos++) {
 			if (names.get(pos).equals(userName)) {

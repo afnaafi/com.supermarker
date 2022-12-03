@@ -16,8 +16,8 @@
 					<version>3.0.0-M7</version>
 					<configuration>
 						<suiteXmlFiles>
-							<file>src/main/resources/XmlFiles/Groups.xml</file>
-							<file>src/main/resources/XmlFiles/Parallel.xml</file>
+							<file>src/main/resources/XmlFiles/ParallelTests.xml</file>
+							<file>src/main/resources/XmlFiles/ParallelClasses.xml</file>
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>

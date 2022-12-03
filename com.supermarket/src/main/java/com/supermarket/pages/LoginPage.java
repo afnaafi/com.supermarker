@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -22,8 +23,10 @@ public class LoginPage {
 	WaitUtility waitutility;
 
 	@FindBy(xpath = "//input[@name='username']")
+	@CacheLookup
 	private WebElement usernameElement;
 	@FindBy(xpath = "//input[@name='password']")
+	@CacheLookup
 	private WebElement passwordElement;
 	@FindBy(xpath = "//button[@class='btn btn-dark btn-block']")
 	private WebElement SignInButton;// encapsulation
@@ -62,6 +65,7 @@ public class LoginPage {
 	}
 
 	public void clickOnSignInButton() {
+		waitutility = new WaitUtility(driver);
 		SignInButton.click();
 	}
 
@@ -87,7 +91,6 @@ public class LoginPage {
 
 	public boolean rememberMe_IsSelected() {
 		generalutilities = new GeneralUtilities(driver);
-		waitutility = new WaitUtility(driver);
 		return generalutilities.is_Selected(rememberMeBox);
 	}
 

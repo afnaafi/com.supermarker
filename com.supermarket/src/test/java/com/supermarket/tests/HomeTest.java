@@ -43,7 +43,7 @@ public class HomeTest extends Base {
 
 	}
 
-	@Test(dependsOnMethods = { "verify_linkOfBox1IsWorking" })
+	@Test
 	public void verify_UrlOfBox1Link() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();

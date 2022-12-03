@@ -42,7 +42,7 @@ public class ManageOrdersPage {
 	public String changeDeliveryStatus(String orderId, String status) {
 		List<String> orderIdS = new ArrayList<String>();
 		generalutilities = new GeneralUtilities(driver);
-		orderIdS = generalutilities.get_textofElements("//tbody//tr//td[1]");
+		orderIdS = generalutilities.get_TextOfElement("//tbody//tr//td[1]");
 		int pos = 0;
 		for (pos = 0; pos < orderIdS.size(); pos++) {
 			if (orderIdS.get(pos).equals(orderId)) {
@@ -68,7 +68,7 @@ public class ManageOrdersPage {
 	public void changeDeliveryDate(String orderId, String date) {
 		List<String> orderIdS = new ArrayList<String>();
 		generalutilities = new GeneralUtilities(driver);
-		orderIdS = generalutilities.get_textofElements("//tbody//tr//td[1]");
+		orderIdS = generalutilities.get_TextOfElement("//tbody//tr//td[1]");
 		int pos = 0;
 		for (pos = 0; pos < orderIdS.size(); pos++) {
 			if (orderIdS.get(pos).equals(orderId)) {
@@ -91,7 +91,7 @@ public class ManageOrdersPage {
 	public void assignDeliveryBoy(String orderId, String name) {
 		List<String> orderIdS = new ArrayList<String>();
 		generalutilities = new GeneralUtilities(driver);
-		orderIdS = generalutilities.get_textofElements("//tbody//tr//td[1]");
+		orderIdS = generalutilities.get_TextOfElement("//tbody//tr//td[1]");
 		int pos = 0;
 		for (pos = 0; pos < orderIdS.size(); pos++) {
 			if (orderIdS.get(pos).equals(orderId)) {
@@ -123,7 +123,7 @@ public class ManageOrdersPage {
 	public void viewDetails(String orderId) {
 		List<String> orderIdS = new ArrayList<String>();
 		generalutilities = new GeneralUtilities(driver);
-		orderIdS = generalutilities.get_textofElements("//tbody//tr//td[1]");
+		orderIdS = generalutilities.get_TextOfElement("//tbody//tr//td[1]");
 		int pos = 0;
 		for (pos = 0; pos < orderIdS.size(); pos++) {
 			if (orderIdS.get(pos).equals(orderId)) {

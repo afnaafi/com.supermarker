@@ -46,7 +46,7 @@ public class HomePage {
 
 	public List<String> get_TextsOfBoxes() {
 		generalutilities = new GeneralUtilities(driver);
-		return generalutilities.get_textofElements("boxes");
+		return generalutilities.get_TextOfElement("boxes");
 	}
 
 	public String get_colourofbox() {

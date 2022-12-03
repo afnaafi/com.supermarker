@@ -124,7 +124,7 @@ public class ManageContentPage {
 	public void DeleteNews(String news) {
 		generalutilities = new GeneralUtilities(driver);
 		List<String> news1 = new ArrayList<String>();
-		news1 = generalutilities.get_textofElements("//tr//td[1]");
+		news1 = generalutilities.get_TextOfElement("//tr//td[1]");
 		int pos = 0;
 		for (pos = 0; pos < news1.size(); pos++) {
 			if (news1.get(pos).equals(news)) {

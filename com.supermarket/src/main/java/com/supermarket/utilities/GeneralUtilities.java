@@ -25,13 +25,24 @@ public class GeneralUtilities {
 		return element.getText();
 	}
 
-	public List<String> get_textofElements(String profileElement) {
+	public List<String> get_TextOfElement(String profileElement) {
 		List<String> text = new ArrayList<String>();
 		List<WebElement> elements = driver.findElements(By.xpath(profileElement));
 		for (WebElement texts1 : elements) {
 			text.add(texts1.getText());
 		}
 		return text;
+	}
+
+	public String get_TimeStamp() {
+		String timeStamp = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
+		return timeStamp;
+	}
+
+	public String get_RandomNumber() {
+		Random r = new Random();
+		int x = r.nextInt(30);
+		return String.valueOf(x);
 	}
 
 	public boolean is_ExpectedTextPresent(WebElement element, String expectedText) {
@@ -68,18 +79,6 @@ public class GeneralUtilities {
 
 	public String get_CurrentUrl() {
 		return driver.getCurrentUrl();
-	}
-
-	public String get_TimeStamp() {
-		String timeStamp = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
-
-		return timeStamp;
-	}
-
-	public String get_RandomNumber() {
-		Random r = new Random();
-		int x = r.nextInt(10);
-		return String.valueOf(x);
 	}
 
 }

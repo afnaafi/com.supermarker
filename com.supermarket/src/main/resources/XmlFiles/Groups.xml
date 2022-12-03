@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="groupingtestcases" thread-count="4" parallel="methods">
+<suite name="groupingtestcases" thread-count="3" parallel="methods">
 	<listeners>
 		<listener class-name="com.supermarket.listeners.ExtentReporter"></listener>
 	</listeners>
@@ -13,9 +13,6 @@
 		<classes>
 			<class name="com.supermarket.tests.HomeTest"></class>
 			<class name="com.supermarket.tests.AdminUsersTest"></class>
-			<class name="com.supermarket.tests.ManageDeliverBoyTest"></class>
-			<class name="com.supermarket.tests.ManageOrdersTest"></class>
-			<class name="com.supermarket.tests.PushNotificationsTest"></class>
 		</classes>
 	</test>
 

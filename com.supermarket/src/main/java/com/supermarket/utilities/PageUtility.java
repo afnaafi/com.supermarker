@@ -44,13 +44,13 @@ public class PageUtility {
 	}
 
 	public void scroll_Down() {
-		js = (JavascriptExecutor) driver;// explicit type conversion
+		js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,1000)");
 	}
 
 	public void scrollInTo_View(WebElement element) {
 
-		js = (JavascriptExecutor) driver;// explicit type conversion
+		js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView();", element);
 
 	}
