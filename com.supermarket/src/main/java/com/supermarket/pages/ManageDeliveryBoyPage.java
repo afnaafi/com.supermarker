@@ -17,29 +17,29 @@ public class ManageDeliveryBoyPage {
 	WaitUtility waitutility;
 
 	@FindBy(xpath = "//li//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy']")
-	WebElement DeliveryBoyPage;
+	private WebElement DeliveryBoyPage;
 	@FindBy(xpath = "//div[@class='col-sm-12']//a[@class='btn btn-rounded btn-danger']")
-	WebElement newButton;
+	private WebElement newButton;
 	@FindBy(xpath = "//div[@class='col-sm-12']//a[@class='btn btn-rounded btn-primary']")
-	WebElement searchButton;
+	private WebElement searchButton;
 	@FindBy(id = "name")
-	WebElement nameField;
+	private WebElement nameField;
 	@FindBy(id = "email")
-	WebElement emailField;
+	private WebElement emailField;
 	@FindBy(id = "username")
-	WebElement usernameField;
+	private WebElement usernameField;
 	@FindBy(id = "password")
-	WebElement passwordField;
+	private WebElement passwordField;
 	@FindBy(className = "btn-danger")
-	WebElement saveButton;
+	private WebElement saveButton;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
-	WebElement createNewSuccessAlert;
+	private WebElement createNewSuccessAlert;
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
-	WebElement alreadyExistAlert;
+	private WebElement alreadyExistAlert;
 	@FindBy(xpath = "//input[@id='un']")
-	WebElement searchNameField;
+	private WebElement searchNameField;
 	@FindBy(xpath = "//button[@class='btn btn-block-sm btn-danger']")
-	WebElement searchUserButton;
+	private WebElement searchUserButton;
 
 	public ManageDeliveryBoyPage(WebDriver driver) {
 		this.driver = driver;
@@ -58,6 +58,8 @@ public class ManageDeliveryBoyPage {
 		emailField.sendKeys(email);
 		usernameField.sendKeys(userName);
 		passwordField.sendKeys(password);
+		waitutility=new WaitUtility(driver);
+		waitutility.waitForElementToBeVisible(20, "//button[@class='btn btn-danger']");
 		pageutility.scroll_And_Click(saveButton);
 	}
 
@@ -68,7 +70,8 @@ public class ManageDeliveryBoyPage {
 
 	public boolean isDuplicationPermitted() {
 		generalutilities = new GeneralUtilities(driver);
-		waitutility.fluent_Wait();
+		waitutility=new WaitUtility(driver);
+		waitutility.fluent_Wait(30, 5, "//div[@class='alert alert-danger alert-dismissible']");;
 		return generalutilities.is_Displayed(alreadyExistAlert);
 	}
 

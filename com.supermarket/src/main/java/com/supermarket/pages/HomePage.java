@@ -1,6 +1,5 @@
 package com.supermarket.pages;
 
-
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,7 +55,8 @@ public class HomePage {
 
 	public void clickOnLink() {
 		waitutility = new WaitUtility(driver);
-		waitutility.fluent_Wait();
+		waitutility.fluent_Wait(30, 5,
+				"//div[@class='small-box bg-info']//a[@href='https://groceryapp.uniqassosiates.com/admin/list-page']");
 		box1Link.click();
 	}
 

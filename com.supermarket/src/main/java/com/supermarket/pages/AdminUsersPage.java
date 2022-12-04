@@ -107,7 +107,7 @@ public class AdminUsersPage {
 		pageutility = new PageUtility(driver);
 		pageutility.Select_ByValue(searchSelectUser, Usertype);
 		waitutility = new WaitUtility(driver);
-		waitutility.fluent_Wait();
+		waitutility.fluent_Wait(30, 5, "//button[@name='Search']");
 		userSearchButton.click();
 	}
 

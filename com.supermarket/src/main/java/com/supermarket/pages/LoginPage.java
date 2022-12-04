@@ -16,7 +16,7 @@ import com.supermarket.utilities.WaitUtility;
 
 public class LoginPage {
 	WebDriver driver;
-	Properties prop = new Properties();// java class
+	Properties prop = new Properties();
 	FileInputStream ip;
 	GeneralUtilities generalutilities;
 	PageUtility pageutility;
@@ -29,7 +29,7 @@ public class LoginPage {
 	@CacheLookup
 	private WebElement passwordElement;
 	@FindBy(xpath = "//button[@class='btn btn-dark btn-block']")
-	private WebElement SignInButton;// encapsulation
+	private WebElement SignInButton;
 	@FindBy(xpath = "//div[@class='info']//a[text()=' Admin']")
 	private WebElement profileElement;
 	@FindBy(xpath = "//div[@class='icheck-dark']//label")
