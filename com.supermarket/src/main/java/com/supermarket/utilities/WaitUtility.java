@@ -1,7 +1,7 @@
 package com.supermarket.utilities;
 
 import java.time.Duration;
-import java.util.function.Function;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WaitUtility<V> {
+public class WaitUtility {
 
 	public static final long IMPLICIT_WAIT = 10;
 	public static final long PAGE_LOAD_WAIT = 10;
