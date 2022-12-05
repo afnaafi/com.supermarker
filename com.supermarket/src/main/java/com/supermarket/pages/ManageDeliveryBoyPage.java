@@ -70,8 +70,6 @@ public class ManageDeliveryBoyPage {
 
 	public boolean isDuplicationPermitted() {
 		generalutilities = new GeneralUtilities(driver);
-		waitutility=new WaitUtility(driver);
-		waitutility.fluent_Wait(30, 5, "//div[@class='alert alert-danger alert-dismissible']");;
 		return generalutilities.is_Displayed(alreadyExistAlert);
 	}
 

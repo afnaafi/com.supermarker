@@ -17,21 +17,21 @@ public class HomePage {
 	WaitUtility waitutility;
 
 	@FindBy(xpath = "//nav[@class='main-header navbar navbar-expand navbar-dark navbar-dark']")
-	WebElement navBar;
+	private WebElement navBar;
 	@FindBy(xpath = "//div[@class='col-lg-3 col-6']")
-	WebElement boxes;
+	private WebElement boxes;
 	@FindBy(xpath = "//div[@class='small-box bg-info']//p[contains(text(),'Manage Pages')]")
-	WebElement box1Text;
+	private WebElement  box1Text;
 	@FindBy(xpath = "//div[@class='small-box bg-info']//a[@href='https://groceryapp.uniqassosiates.com/admin/list-page']")
-	WebElement box1Link;
+	private WebElement box1Link;
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']")
-	WebElement table1;
+	private WebElement table1;
 	@FindBy(xpath = "//div[@class='col-sm-6']//h1")
-	WebElement manageContentPageHeading;
+	private WebElement manageContentPageHeading;
 	@FindBy(xpath = "//li[@class='nav-item dropdown']")
-	WebElement userNameId;
+	private WebElement userNameId;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/logout'][1]")
-	WebElement logout;
+	private WebElement logout;
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
