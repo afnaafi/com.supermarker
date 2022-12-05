@@ -65,7 +65,6 @@ public class LoginPage {
 	}
 
 	public void clickOnSignInButton() {
-		waitutility = new WaitUtility(driver);
 		SignInButton.click();
 	}
 

@@ -93,8 +93,6 @@ public class AdminUsersPage {
 	}
 
 	public boolean verifySuccess() {
-		waitutility = new WaitUtility(driver);
-		waitutility.waitForElementToBeVisible(10, "//div[@class='alert alert-success alert-dismissible']");
 		return successAlert.isDisplayed();
 	}
 
@@ -106,8 +104,6 @@ public class AdminUsersPage {
 		searchUser.sendKeys(username);
 		pageutility = new PageUtility(driver);
 		pageutility.Select_ByValue(searchSelectUser, Usertype);
-		waitutility = new WaitUtility(driver);
-		waitutility.fluent_Wait(30, 5, "//button[@name='Search']");
 		userSearchButton.click();
 	}
 
@@ -130,8 +126,6 @@ public class AdminUsersPage {
 
 	public boolean deleteUserSuccessAlert() {
 		generalutilities = new GeneralUtilities(driver);
-		waitutility = new WaitUtility(driver);
-		waitutility.waitForElementToBeVisible(10, "//div[@class='alert alert-success alert-dismissible']");
 		return generalutilities.is_Displayed(deleteAlertSucces);
 	}
 

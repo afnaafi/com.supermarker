@@ -15,7 +15,7 @@ public class LoginTest extends Base {
 	Excel excel = new Excel();
 	SoftAssert softassert;
 
-	@Test
+	@Test(priority=2)
 	public void verifyLoginPageDisplay() {
 		loginpage = new LoginPage(driver);
 		softassert = new SoftAssert();
@@ -25,7 +25,7 @@ public class LoginTest extends Base {
 		softassert.assertTrue(loginpage.signIn_IsDispayed());
 	}
 
-	@Test
+	@Test(priority=1,invocationCount = 2)
 	public void verifyStafLoginFunctionality() {
 		loginpage = new LoginPage(driver);
 		excel.setExcelFile("LoginDatas", "ValidLoginCredentials");
@@ -48,7 +48,7 @@ public class LoginTest extends Base {
 		Assert.assertTrue(loginpage.isInvalidAlertMessagePresent(Constants.INVALIDUSERALERT));
 	}
 
-	@Test
+	@Test(priority=8)
 	public void verifyRememberMe_IsSelected() {
 		loginpage = new LoginPage(driver);
 		softassert = new SoftAssert();
@@ -57,7 +57,7 @@ public class LoginTest extends Base {
 		softassert.assertTrue(loginpage.rememberMe_IsSelected());
 	}
 
-	@Test
+	@Test(priority=10)
 	public void verifyRememberMeCheckboxText() {
 		loginpage = new LoginPage(driver);
 		String actualText = loginpage.rememberMeText();

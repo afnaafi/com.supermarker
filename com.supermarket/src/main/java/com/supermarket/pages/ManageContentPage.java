@@ -11,38 +11,40 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.supermarket.utilities.GeneralUtilities;
 import com.supermarket.utilities.PageUtility;
+import com.supermarket.utilities.WaitUtility;
 
 public class ManageContentPage {
 	WebDriver driver;
 	GeneralUtilities generalutilities;
 	PageUtility pageutility;
+	WaitUtility waitutility;
 
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
-	WebElement newButton;
+	private WebElement newButton;
 	@FindBy(xpath = "//input[@name='main_img']")
-	WebElement imageupload;
+	private WebElement imageupload;
 	@FindBy(xpath = "//input[@id='title']")
-	WebElement titleLink;
+	private WebElement titleLink;
 	@FindBy(xpath = "//div[@class='note-editable card-block']")
-	WebElement descriptionLink;
+	private WebElement descriptionLink;
 	@FindBy(xpath = "//input[@id='page']")
-	WebElement pageLink;
+	private WebElement pageLink;
 	@FindBy(xpath = "//button[@class='btn btn-danger']")
-	WebElement saveButton;
+	private WebElement saveButton;
 	@FindBy(xpath = "//div[@class='col-sm-6']//h1")
-	WebElement manageContentPageHeading;
+	private WebElement manageContentPageHeading;
 	@FindBy(xpath = "//li[@class='nav-item']//a[@href='https://groceryapp.uniqassosiates.com/admin/list-page']")
-	WebElement managePages;
+	private WebElement managePages;
 	@FindBy(xpath = "//li[@class='nav-item']//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext']")
-	WebElement manageFooterText;
+	private WebElement manageFooterText;
 	@FindBy(xpath = "//li[@class='nav-item']//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact']")
-	WebElement manageContact;
+	private WebElement manageContact;
 	@FindBy(xpath = "//tr//td//a[@href='https://groceryapp.uniqassosiates.com/admin/Footertext/edit?edit=2']")
-	WebElement footerActionButton;
+	private WebElement footerActionButton;
 	@FindBy(xpath = "//li[@class='nav-item']//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news']")
-	WebElement manageNews;
+	private WebElement manageNews;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
-	WebElement deleteNewsSuccessAlert;
+	private WebElement deleteNewsSuccessAlert;
 
 	public ManageContentPage(WebDriver driver) {
 		this.driver = driver;
@@ -80,7 +82,8 @@ public class ManageContentPage {
 	public String textOfProductTitle(String title) {
 		generalutilities = new GeneralUtilities(driver);
 		WebElement text = driver.findElement(By.xpath("//tbody//tr//td[text()='" + title + "']"));
-		System.out.println(generalutilities.get_TextOfElement(text));
+		waitutility = new WaitUtility(driver);
+		waitutility.fluent_Wait(30, 5, "//tbody//tr//td[text()='\" + title + \"']");
 		return generalutilities.get_TextOfElement(text);
 	}
 
@@ -139,6 +142,8 @@ public class ManageContentPage {
 	}
 
 	public boolean deleteNewsSuccess() {
+		waitutility = new WaitUtility(driver);
+		waitutility.waitForElementToBeVisible(20, "//div[@class='alert alert-success alert-dismissible']");
 		return deleteNewsSuccessAlert.isDisplayed();
 	}
 

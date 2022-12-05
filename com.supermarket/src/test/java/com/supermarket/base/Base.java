@@ -23,7 +23,7 @@ public class Base {
 	/** automation_core **/
 
 	public WebDriver driver;
-	Properties prop = new Properties();// java class
+	Properties prop = new Properties();
 	FileInputStream fi;
 
 	public Base() {
@@ -32,7 +32,6 @@ public class Base {
 			prop.load(fi);
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}

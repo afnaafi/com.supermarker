@@ -8,18 +8,36 @@
 		<parameter name="browser" value="chrome"></parameter>
 		<classes>
 			<class name="com.supermarket.tests.LoginTest"></class>
+			<class name="com.supermarket.tests.HomeTest"></class>
+			<class name="com.supermarket.tests.AdminUsersTest"></class>
+			<class name="com.supermarket.tests.ManageContentTest"></class>
+			<class name="com.supermarket.tests.ManageDeliveryBoyTest"></class>
+			<class name="com.supermarket.tests.ManageOrdersTest"></class>
+			<class name="com.supermarket.tests.PushNotificationsTest"></class>
 		</classes>
 	</test>
 	<test name="browser edge">
 		<parameter name="browser" value="edge"></parameter>
 		<classes>
 			<class name="com.supermarket.tests.LoginTest"></class>
+			<class name="com.supermarket.tests.HomeTest"></class>
+			<class name="com.supermarket.tests.AdminUsersTest"></class>
+			<class name="com.supermarket.tests.ManageContentTest"></class>
+			<class name="com.supermarket.tests.ManageDeliveryBoyTest"></class>
+			<class name="com.supermarket.tests.ManageOrdersTest"></class>
+			<class name="com.supermarket.tests.PushNotificationsTest"></class>
 		</classes>
 	</test>
 	<test name="browser firefox">
 		<parameter name="browser" value="firefox"></parameter>
 		<classes>
 			<class name="com.supermarket.tests.LoginTest"></class>
+			<class name="com.supermarket.tests.HomeTest"></class>
+			<class name="com.supermarket.tests.AdminUsersTest"></class>
+			<class name="com.supermarket.tests.ManageContentTest"></class>
+			<class name="com.supermarket.tests.ManageDeliveryBoyTest"></class>
+			<class name="com.supermarket.tests.ManageOrdersTest"></class>
+			<class name="com.supermarket.tests.PushNotificationsTest"></class>
 		</classes>
 	</test>
 </suite>

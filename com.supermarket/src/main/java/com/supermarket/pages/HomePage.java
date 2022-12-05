@@ -55,8 +55,6 @@ public class HomePage {
 
 	public void clickOnLink() {
 		waitutility = new WaitUtility(driver);
-		waitutility.fluent_Wait(30, 5,
-				"//div[@class='small-box bg-info']//a[@href='https://groceryapp.uniqassosiates.com/admin/list-page']");
 		box1Link.click();
 	}
 

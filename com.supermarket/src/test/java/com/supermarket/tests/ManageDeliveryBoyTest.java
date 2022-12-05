@@ -16,7 +16,7 @@ public class ManageDeliveryBoyTest extends Base {
 	SoftAssert softassert;
 	ManageDeliveryBoyPage manageDeliveryBoy;
 
-	@Test
+	@Test(priority=1)
 	public void verifyCreateNewDeliverBoyFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
@@ -31,7 +31,7 @@ public class ManageDeliveryBoyTest extends Base {
 	}
 
 	@Test(groups="Regression")
-	public void verifyUnabletoCreateDeliverBoyWithSameUserName() {
+	public void verifyCreateDeliverBoyWithSameUserNameFunctionality() {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		manageDeliveryBoy = new ManageDeliveryBoyPage(driver);
